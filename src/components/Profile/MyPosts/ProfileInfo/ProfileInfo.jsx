@@ -4,12 +4,17 @@ import s from './ProfileInfo.module.css';
 const ProfileInfo = () => {
   return (      
     <div>
-      <div>
-        <img src="./logo.png" alt="avatar"></img>
+      <div className={s.wallpapper}>
+        <img src={window.location.origin + '/image/big02.png'} alt="avatar"></img>
       </div>
       <div className={s.descriptionBlock}>
-        <img src="./logo.png" alt="avatar"></img>
-        ava + description
+        <img src={window.location.origin + '/image/rickmorty.png'} alt="avatar" />
+        <div>
+          <p>Name: Rick and Morty</p>
+          <p>Age: no informations</p>
+          <p>Education: no informations</p>
+          <p>Job: no informations</p>
+        </div>
       </div>
     </div>
   )

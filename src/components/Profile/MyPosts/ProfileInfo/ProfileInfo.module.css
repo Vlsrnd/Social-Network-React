@@ -1,3 +1,15 @@
 .descriptionBlock {
   padding: 10px;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+.descriptionBlock img {
+  width: 200px;
+}
+.wallpapper {
+  background-image: url('/public/image/big01.jpg');
+  text-align: center;
+}
+.wallpapper img {
+  /* height: 200px; */
 }

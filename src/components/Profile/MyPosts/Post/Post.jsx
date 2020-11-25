@@ -4,11 +4,9 @@ import s from './Post.module.css';
 const Post = (props) => {
   return (      
     <div className={s.item}>
-      <img src="./ava001.png" alt="avatar"></img>
-      {props.message}
-      <div>
-        <span>Like ({props.likesCount})</span>
-      </div>
+      <img src={window.location.origin + '/image/' + props.imgLink} alt="avatar"></img>
+      <span>{props.message}</span>
+      <div className={s.like}>Like ({props.likesCount})</div>
     </div>
   )
 }

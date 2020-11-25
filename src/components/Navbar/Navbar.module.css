@@ -1,12 +1,20 @@
 .nav {
   grid-area: n;
   padding: 20px;
-  border: 1px solid green;
+  background-color: hsl(35, 50%, 50%);
+}
+
+.item {
+  padding: 20px;
 }
 
 .item a {
   color: gray;
   text-decoration: none;
+  font-size: 26px;
+  
+  font-family: monospace;
+  color: hsl(35, 50%, 30%);
 }
 
 .item a.activeLink{
