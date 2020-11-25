@@ -1,3 +1,7 @@
 .posts {
   background-color: lightgray;
 }
+
+.postsBlock {
+  padding: 10px;
+}
