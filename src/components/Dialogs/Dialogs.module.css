@@ -22,3 +22,8 @@
 .message {
   padding: 5px 0;
 }
+
+.active {
+  font-weight: 700;
+  color: #000;
+}
