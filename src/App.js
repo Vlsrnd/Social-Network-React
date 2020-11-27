@@ -12,7 +12,6 @@ import {BrowserRouter, Route} from 'react-router-dom';
 
 const App = (props) => {
   return (
-    <BrowserRouter>
       <div className="app-wrapper">
         <Header />
         <Navbar state={props.state.sidebar}/>
@@ -26,7 +25,6 @@ const App = (props) => {
           <Route path="/setting" render={() => <Setting />} />
         </div>
       </div>
-    </BrowserRouter>
   );
 }
 
