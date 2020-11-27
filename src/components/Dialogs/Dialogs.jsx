@@ -6,8 +6,8 @@ import s from './Dialogs.module.css';
 
 
 const Dialogs = (props) => {
-  const messagesElements = props.messages.map(msg => <Message message={msg.message} />);
-  const dialogsElements = props.dialogs.map( user => <DialogItem name={user.name} id={user.id} />);
+  const messagesElements = props.state.messages.map(msg => <Message message={msg.message} />);
+  const dialogsElements = props.state.dialogs.map( user => <DialogItem name={user.name} id={user.id} ava={user.ava} />);
   
   return (      
     <div className={s.dialogs}>

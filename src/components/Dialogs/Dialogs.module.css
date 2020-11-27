@@ -16,11 +16,18 @@
 }
 
 .messages {
-  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .message {
-  padding: 5px 0;
+  padding: 5px;
+  background-color: hsl(150, 100%, 90%);
+}
+.message:nth-child(2n) {
+  text-align: right;
+  background-color: hsl(150, 100%, 70%);
 }
 
 .active {
