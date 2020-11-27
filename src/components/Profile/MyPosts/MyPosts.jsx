@@ -3,6 +3,8 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
+  console.log('MyPosts', props)
+  const postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount} imgLink={p.imgLink}/>)
 
   return (      
     <div className={s.postsBlock}>
@@ -10,7 +12,7 @@ const MyPosts = (props) => {
       <textarea></textarea>
       <button>Add post</button>
       <div className={s.posts}>
-        {props.postsElements}
+        {postsElements}
       </div>
       
     </div> 
