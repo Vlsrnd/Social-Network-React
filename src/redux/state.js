@@ -1,3 +1,5 @@
+export {state, addPost};
+
 const state = {
   profilePage: {
     posts: [{id: 1, message: 'Hi', likesCount: 11, imgLink: 'morty1.png'},
@@ -35,4 +37,16 @@ const state = {
   },
 }
 
-export default state;
+//Input === string
+const addPost = (postMessage) => {
+  let newPost = {
+    id: 5,
+    message: postMessage,
+    likesCount: 2,
+    imgLink: 'Donald_Duck.png',
+  };
+  state.profilePage.posts.push(newPost);
+  console.log(state);
+}
+
+
