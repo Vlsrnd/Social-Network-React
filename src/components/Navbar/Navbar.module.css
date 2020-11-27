@@ -1,7 +1,9 @@
 .nav {
   grid-area: n;
   padding: 20px;
-  background-color: hsl(35, 50%, 50%);
+  /* background-color: hsl(35, 50%, 50%); */
+  border: 1px dotted black;
+  border-top: none;
 }
 
 .item {
@@ -11,7 +13,7 @@
 .item a {
   color: gray;
   text-decoration: none;
-  font-size: 26px;
+  font-size: 16px;
   
   font-family: monospace;
   color: hsl(35, 50%, 30%);

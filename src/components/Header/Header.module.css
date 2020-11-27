@@ -1,6 +1,7 @@
 .header {
   grid-area: h;
-  background-color: hsla(40, 50%, 50%, 1);
+  /* background-color: hsla(40, 50%, 50%, 1); */
+  border: 1px dotted black;
 }
 .header img {
   width: 40px;
