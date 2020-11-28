@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from "../render";
+
 export {state, addPost};
 
 const state = {
@@ -46,7 +48,9 @@ const addPost = (postMessage) => {
     imgLink: 'Donald_Duck.png',
   };
   state.profilePage.posts.push(newPost);
-  console.log(state);
+  rerenderEntireTree(state);
 }
 
+//
+state.addPost = addPost;
 
