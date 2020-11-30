@@ -6,12 +6,16 @@ import s from './Dialogs.module.css';
 
 
 const Dialogs = (props) => {
-  
+  console.log(props)
   const newMessage = React.createRef();
 
   const sendMessage = () => {
+    props.addMessage();
+  }
+
+  const onMessageChange = () => {
     const text = newMessage.current.value;
-    alert(text);
+    props.updateNewMessageText(text);
   }
   
   const dialogsElements = props.state.dialogs.map( user => <DialogItem name={user.name} id={user.id} ava={user.ava} />);
@@ -31,7 +35,7 @@ const Dialogs = (props) => {
 
       <div className={s.submitForm}>
         <div>
-          <textarea ref={newMessage}></textarea>
+          <textarea onChange={onMessageChange} value={props.state.newMessageText} ref={newMessage}></textarea>
         </div>
         <div>
           <button onClick={sendMessage}>Send message</button>

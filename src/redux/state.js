@@ -1,6 +1,6 @@
 import { rerenderEntireTree } from "../render";
 
-export {state, addPost};
+export {state};
 
 const state = {
   profilePage: {
@@ -10,7 +10,7 @@ const state = {
             {id: 4, message: 'How are you', likesCount: 6, imgLink: 'sonic1.png'},
             {id: 5, message: 'Hey, long time no see', likesCount: 14, imgLink: 'Donald_Duck1.png'},
             {id: 6, message: 'How have you been?', likesCount: 18, imgLink: 'chip1.png'}],
-
+    newPostText: '',
   },
   dialogsPage: {
     messages: [{id: 1, message: 'Hi, hey'}, 
@@ -26,6 +26,7 @@ const state = {
               {id: 4, name: 'Sasha', ava: '1mario.png'},
               {id: 5, name: 'Viktor', ava: '1mario.png'},
               {id: 6, name: 'Valera', ava: '1mario.png'}],
+    newMessageText: '',
   },
   news: {},
   music: {},
@@ -37,20 +38,38 @@ const state = {
       {ava: 'sonic.png', name: 'Sonic'},
     ],
   },
-}
+};
 
-//Input === string
-const addPost = (postMessage) => {
-  let newPost = {
+state.addPost = () => {
+  const newPost = {
     id: 5,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likesCount: 2,
     imgLink: 'Donald_Duck.png',
   };
   state.profilePage.posts.push(newPost);
   rerenderEntireTree(state);
+  state.profilePage.newPostText = '';
+};
+
+state.updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText;
+  rerenderEntireTree(state);
+};
+
+
+
+state.updateNewMessageText = (newText) => {
+  state.dialogsPage.newMessageText = newText;
+  rerenderEntireTree(state);
 }
 
-//
-state.addPost = addPost;
-
+state.addMessage = () => {
+  const newMessage = {
+    id: 1,
+    message: state.dialogsPage.newMessageText,
+  };
+  state.dialogsPage.messages.push(newMessage);
+  rerenderEntireTree(state);
+  state.dialogsPage.newMessageText = '';
+}
