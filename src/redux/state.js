@@ -1,9 +1,7 @@
-export {store, addPostActionCreator, updateNewPostTextActionCreator, addMessageActionCreator,
-        updateNewMessageTextActionCreator, }
-const ADD_POST = 'ADD-POST',
-      UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
-      ADD_MESSAGE = 'ADD-MESSAGE',
-      UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import { dialogsReducer } from "./dialogsReducer";
+import { profileReducer } from "./profileReducer";
+
+export {store}
 
 
 const store = {
@@ -57,41 +55,15 @@ const store = {
     this._callSubscriber = observer;
   },
 
-  // action = {type: 'ADD-POST', newText: 'some text'}
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      const newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likesCount: 2,
-        imgLink: '1Donald_Duck.png',
-      };
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_POST_TEXT){
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === ADD_MESSAGE) {
-      const newMessage = {
-        id: 1,
-        message: this._state.dialogsPage.newMessageText,
-      };
-      this._state.dialogsPage.messages.push(newMessage);
-      this._state.dialogsPage.newMessageText = '';
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._state.dialogsPage.newMessageText = action.newText;
-      this._callSubscriber(this._state);
-    } else {
-      return console.error(`Error: undefined method. Callback function isn't founded into dispatch`), false;
-    }
+    profileReducer(this.getState().profilePage, action);
+    dialogsReducer(this.getState().dialogsPage, action);
+
+    this._callSubscriber(this.getState());
   },
 };
-const addPostActionCreator = () => ({ type: ADD_POST });
-const updateNewPostTextActionCreator = text => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
-const addMessageActionCreator = () => ({ type: 'ADD-MESSAGE' });
-const updateNewMessageTextActionCreator = text => ({ type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text })
+
+
 
 
 
