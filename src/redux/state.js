@@ -38,9 +38,9 @@ const store = {
     setting: {},
     sidebar: {
       friends: [
-        {ava: 'mario.png', name: 'Mario'},
-        {ava: 'Donald_Duck.png', name: 'Donald'},
-        {ava: 'sonic.png', name: 'Sonic'},
+        {ava: '1mario.png', name: 'Mario'},
+        {ava: '1Donald_Duck.png', name: 'Donald'},
+        {ava: '1sonic.png', name: 'Sonic'},
       ],
     },
   },
@@ -64,7 +64,7 @@ const store = {
         id: 5,
         message: this._state.profilePage.newPostText,
         likesCount: 2,
-        imgLink: 'Donald_Duck.png',
+        imgLink: '1Donald_Duck.png',
       };
       this._state.profilePage.posts.push(newPost);
       this._state.profilePage.newPostText = '';

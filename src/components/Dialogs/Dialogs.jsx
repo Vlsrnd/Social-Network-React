@@ -5,14 +5,13 @@ import s from './Dialogs.module.css';
 import {addMessageActionCreator, updateNewMessageTextActionCreator} from './../../redux/state';
 
 const Dialogs = (props) => {
-  const newMessage = React.createRef();
-
+  
   const sendMessage = () => {
     props.dispatch(addMessageActionCreator());
   }
 
-  const onMessageChange = () => {
-    const text = newMessage.current.value;
+  const onMessageChange = (event) => {
+    const text = event.target.value;
     props.dispatch(updateNewMessageTextActionCreator(text));
   }
   
@@ -33,7 +32,8 @@ const Dialogs = (props) => {
 
       <div className={s.submitForm}>
         <div>
-          <textarea onChange={onMessageChange} value={props.state.newMessageText} ref={newMessage}></textarea>
+          <textarea onChange={onMessageChange} value={props.state.newMessageText} 
+                    placeholder='some text'></textarea>
         </div>
         <div>
           <button onClick={sendMessage}>Send message</button>
