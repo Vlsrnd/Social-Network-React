@@ -37,48 +37,47 @@ export const store = {
     },
   },
 
-  getState() {
-    return this._state;
-  },
-
   _callSubscriber() {
     console.log('State changed');
   },
 
-  addPost() {
-    const newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likesCount: 2,
-      imgLink: 'Donald_Duck.png',
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._callSubscriber(this._state);
-    this._state.profilePage.newPostText = '';
+  getState() {
+    return this._state;
   },
 
   subscribe(observer) {
     this._callSubscriber = observer;
   },
 
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-
-  updateNewMessageText(newText) {
-    this._state.dialogsPage.newMessageText = newText;
-    this._callSubscriber(this._state);
-  },
-
-  addMessage() {
-    const newMessage = {
-      id: 1,
-      message: this._state.dialogsPage.newMessageText,
-    };
-    this._state.dialogsPage.messages.push(newMessage);
-    this._callSubscriber(this._state);
-    this._state.dialogsPage.newMessageText = '';
+  // action = {type: 'ADD-POST', newText: 'some text'}
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      const newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likesCount: 2,
+        imgLink: 'Donald_Duck.png',
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = '';
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT'){
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    } else if (action.type === 'ADD-MESSAGE') {
+      const newMessage = {
+        id: 1,
+        message: this._state.dialogsPage.newMessageText,
+      };
+      this._state.dialogsPage.messages.push(newMessage);
+      this._state.dialogsPage.newMessageText = '';
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+      this._state.dialogsPage.newMessageText = action.newText;
+      this._callSubscriber(this._state);
+    } else {
+      return console.error(`Error: undefined method. Callback function isn't founded into dispatch`), false;
+    }
   },
 };
 

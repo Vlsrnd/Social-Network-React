@@ -3,17 +3,17 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-  const postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount} imgLink={p.imgLink}/>)
+  const postsElements = props.profilePage.posts.map(p => <Post message={p.message} likesCount={p.likesCount} imgLink={p.imgLink}/>)
 
   let newPostElement = React.createRef();
 
   const addPost = () => {
-    props.addPost();
+    props.dispatch({ type: 'ADD-POST' });
   }
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+    props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text });
   }
 
   return (      
@@ -21,7 +21,7 @@ const MyPosts = (props) => {
       <h3>There is my posts</h3>
       <div>
         <div>
-          <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
+          <textarea onChange={onPostChange} ref={newPostElement} value={props.profilePage.newPostText} />
         </div>
         <div>
           <button onClick={addPost}>Add post</button>
