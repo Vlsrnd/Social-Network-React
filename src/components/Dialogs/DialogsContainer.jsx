@@ -13,12 +13,9 @@ const DialogsContainer = (props) => {
     props.store.dispatch(updateNewMessageTextActionCreator(text));
   }
 
-  const state = props.store.getState().dialogsPage;
-  return <Dialogs sendMessage={onSendMessage} 
-                  updateNewMessageText={onMessageChange}
-                  dialogs={state.dialogs}
-                  messages={state.messages}
-                  newMessageText={state.newMessageText} />
+  return  (<Dialogs sendMessage={onSendMessage} 
+                    updateNewMessageText={onMessageChange}
+                    state={props.store.getState().dialogsPage} />)
 }
 
 export default DialogsContainer;

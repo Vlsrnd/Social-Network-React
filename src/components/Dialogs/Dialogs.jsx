@@ -14,8 +14,8 @@ const Dialogs = (props) => {
     props.updateNewMessageText(text);
   }
   
-  const dialogsElements = props.dialogs.map( user => <DialogItem name={user.name} id={user.id} ava={user.ava} />);
-  const messagesElements = props.messages.map(msg => <Message message={msg.message} />);
+  const dialogsElements = props.state.dialogs.map( user => <DialogItem name={user.name} id={user.id} ava={user.ava} />);
+  const messagesElements = props.state.messages.map(msg => <Message message={msg.message} />);
   
 
 
@@ -31,7 +31,7 @@ const Dialogs = (props) => {
 
       <div className={s.submitForm}>
         <div>
-          <textarea onChange={onMessageChange} value={props.newMessageText} 
+          <textarea onChange={onMessageChange} value={props.state.newMessageText} 
                     placeholder='some text'></textarea>
         </div>
         <div>
