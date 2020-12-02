@@ -8,11 +8,10 @@ import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
 const rerenderEntireTree = (state) => {
-  debugger
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} dispatch={store.dispatch.bind(store)} />
+        <App state={state} store={store} />
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

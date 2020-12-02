@@ -2,21 +2,20 @@ import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import s from './Dialogs.module.css';
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from './../../redux/dialogsReducer';
 
 const Dialogs = (props) => {
   
   const sendMessage = () => {
-    props.dispatch(addMessageActionCreator());
+    props.sendMessage();
   }
 
   const onMessageChange = (event) => {
     const text = event.target.value;
-    props.dispatch(updateNewMessageTextActionCreator(text));
+    props.updateNewMessageText(text);
   }
   
-  const dialogsElements = props.state.dialogs.map( user => <DialogItem name={user.name} id={user.id} ava={user.ava} />);
-  const messagesElements = props.state.messages.map(msg => <Message message={msg.message} />);
+  const dialogsElements = props.dialogs.map( user => <DialogItem name={user.name} id={user.id} ava={user.ava} />);
+  const messagesElements = props.messages.map(msg => <Message message={msg.message} />);
   
 
 
@@ -32,7 +31,7 @@ const Dialogs = (props) => {
 
       <div className={s.submitForm}>
         <div>
-          <textarea onChange={onMessageChange} value={props.state.newMessageText} 
+          <textarea onChange={onMessageChange} value={props.newMessageText} 
                     placeholder='some text'></textarea>
         </div>
         <div>
