@@ -1,5 +1,3 @@
-export {addPostActionCreator, updateNewPostTextActionCreator, profileReducer};
-
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
@@ -39,3 +37,5 @@ const profileReducer = (state = initialState, action) => {
       return state;
   }
 }
+
+export {addPostActionCreator, updateNewPostTextActionCreator, profileReducer};

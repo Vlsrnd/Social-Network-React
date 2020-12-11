@@ -4,8 +4,9 @@ import Message from './Message/Message';
 import s from './Dialogs.module.css';
 
 const Dialogs = (props) => {
-  const sendMessage = () => {
+  const onSendMessage = () => {
     props.sendMessage();
+
   }
 
   const onMessageChange = (event) => {
@@ -13,8 +14,8 @@ const Dialogs = (props) => {
     props.updateNewMessageText(text);
   }
   
-  const dialogsElements = props.dialogs.map( user => <DialogItem name={user.name} id={user.id} ava={user.ava} />);
-  const messagesElements = props.messages.map(msg => <Message message={msg.message} />);
+  const dialogsElements = props.dialogs.map( user => <DialogItem name={user.name} key={user.id} id={user.id} ava={user.ava} />);
+  const messagesElements = props.messages.map(msg => <Message message={msg.message} key={msg.id} />);
   
 
 
@@ -34,7 +35,7 @@ const Dialogs = (props) => {
                     placeholder='some text'></textarea>
         </div>
         <div>
-          <button onClick={sendMessage}>Send message</button>
+          <button onClick={onSendMessage}>Send message</button>
         </div>
       </div>
     </div>
