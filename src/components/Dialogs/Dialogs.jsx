@@ -4,6 +4,7 @@ import Message from './Message/Message';
 import s from './Dialogs.module.css';
 
 const Dialogs = (props) => {
+  // debugger
   const onSendMessage = () => {
     props.sendMessage();
 
