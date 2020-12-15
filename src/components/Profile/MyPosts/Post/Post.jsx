@@ -1,12 +1,12 @@
 import React from 'react';
-import s from './Post.module.css';
+import styles from './Post.module.css';
 
 const Post = (props) => {
   return (      
-    <div className={s.item}>
+    <div className={styles.item}>
       <img src={window.location.origin + '/image/' + props.imgLink} alt="avatar"></img>
       <span>{props.message}</span>
-      <div className={s.like}>Like ({props.likesCount})</div>
+      <div className={styles.like}>Like ({props.likesCount})</div>
     </div>
   )
 }

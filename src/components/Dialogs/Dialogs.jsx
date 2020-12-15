@@ -1,7 +1,7 @@
 import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import s from './Dialogs.module.css';
+import styles from './Dialogs.module.css';
 
 const Dialogs = (props) => {
   // debugger
@@ -21,16 +21,16 @@ const Dialogs = (props) => {
 
 
   return (      
-    <div className={s.dialogs}>
-      <div className={s.dialogsItems}>
+    <div className={styles.dialogs}>
+      <div className={styles.dialogsItems}>
         {dialogsElements}
       </div>
 
-      <div className={s.messages}>
+      <div className={styles.messages}>
         {messagesElements}
       </div>
 
-      <div className={s.submitForm}>
+      <div className={styles.submitForm}>
         <div>
           <textarea onChange={onMessageChange} value={props.newMessageText} 
                     placeholder='some text'></textarea>
