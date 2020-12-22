@@ -8,7 +8,7 @@ let initialState = {
   users: [],
   pageSize: 5,
   totalUsersCount: 26,
-  currentPage: 5,
+  currentPage: 1,
 };
 
 //followActionCreator, unfollowActionCreator
