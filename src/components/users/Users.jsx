@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import userPhoto from '../../assets/images/user.png';
 import styles from './users.module.css';
 
@@ -8,7 +9,6 @@ const Users = (props) => {
   for (let i = 1; i <= pagesCount; i++){
     pages.push(i);
   };
-  // debugger
   return (
     <div>
       <div>
@@ -24,7 +24,10 @@ const Users = (props) => {
         props.users.map(user => <div key={user.id}>
           <span>
             <div>
-              <img src={user.photos.small || userPhoto} alt="ava" className={styles.userPhoto} />
+              <NavLink to={'/profile/' + user.id}>
+                <img src={user.photos.small || userPhoto} alt="ava" 
+                  className={styles.userPhoto} />
+              </NavLink>
             </div>
             <div>
               {user.followed 

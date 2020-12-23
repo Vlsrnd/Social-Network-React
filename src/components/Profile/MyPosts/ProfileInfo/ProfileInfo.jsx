@@ -1,14 +1,16 @@
 import React from 'react';
+import Preloader from '../../../Preloader/preloader';
 import styles from './ProfileInfo.module.css';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+  if (!props.profile) return <Preloader />
   return (      
     <div>
       <div className={styles.wallpapper}>
         <img src={window.location.origin + '/image/big021.png'} alt="wallpapper"></img>
       </div>
       <div className={styles.descriptionBlock}>
-        <img src={window.location.origin + '/image/rickmorty1.png'} alt="main avatar" />
+        <img src={props.profile.photos.large} alt="main avatar" />
         <div>
           <p>Name: Rick and Morty</p>
           <p>Age: no informations</p>
