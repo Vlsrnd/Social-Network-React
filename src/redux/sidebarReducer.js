@@ -6,9 +6,4 @@ const initialState = {
   ],
 };
 
-const sidebarReducer = (state = initialState, action) => {
-
-  return state;
-}
-
-export {sidebarReducer};
+export const sidebarReducer = (state = initialState) => state;
