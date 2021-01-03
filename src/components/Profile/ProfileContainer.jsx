@@ -6,7 +6,9 @@ import Profile from './Profile';
 
 class ProfileContainer extends React.Component {
   componentDidMount = () => {
-    this.props.getUserProfile(this.props.match.params);
+    let userId = this.props.match.params.userId;
+    userId = userId ? userId : 2;
+    this.props.getUserProfile(userId);
   }
 
   render = () => <Profile {...this.props} profile={this.props.profile}/>

@@ -20,8 +20,7 @@ export const addPost = () => ({ type: ADD_POST });
 export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 //thunk
-export const getUserProfile = (params) => (dispatch) => {
-  let userId = params.userId ? params.userId : 2;
+export const getUserProfile = (userId) => (dispatch) => {
   profileAPI.getProfile(userId).then(data => {
     dispatch(setUserProfile(data));
   })

@@ -12,7 +12,7 @@ let initialState = {
 //action creator
 export const setAuthUserData = (id, email, login) => ({type: SET_USER_DATA, data: {id, email, login}});
 //thunk
-export const checkAuthorize = () => (dispatch) => {
+export const getAuthUserData = () => (dispatch) => {
   authAPI.amIAuthorized().then(data => {
     if (data.resultCode === 0) {
       let {id, email, login} = data.data;
