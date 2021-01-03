@@ -20,7 +20,6 @@ export const followAPI = {
   check(userId) {
     return instance
       .get(`follow/${userId}`)
-      .then
   },
   follow(userId) {
     return instance
