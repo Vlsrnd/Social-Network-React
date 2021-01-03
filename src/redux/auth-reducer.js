@@ -1,3 +1,5 @@
+import { authAPI } from "../api/api";
+
 const SET_USER_DATA = 'SET-USER-DATA';
 
 let initialState = {
@@ -7,7 +9,17 @@ let initialState = {
   isAuth: false,
 };
 
+//action creator
 export const setAuthUserData = (id, email, login) => ({type: SET_USER_DATA, data: {id, email, login}});
+//thunk
+export const checkAuthorize = () => (dispatch) => {
+  authAPI.amIAuthorized().then(data => {
+    if (data.resultCode === 0) {
+      let {id, email, login} = data.data;
+      dispatch(setAuthUserData(id, email, login));
+    }
+  })
+}
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
