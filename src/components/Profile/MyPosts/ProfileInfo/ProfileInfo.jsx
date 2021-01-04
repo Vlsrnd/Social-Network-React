@@ -12,7 +12,7 @@ const ProfileInfo = (props) => {
       </div>
       <div className={styles.descriptionBlock}>
         <img src={props.profile.photos.large} alt="main avatar" />
-        <ProfileStatus status={'hello'}/>
+        <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
         <div>
           <p>Name: Rick and Morty</p>
           <p>Age: no informations</p>
