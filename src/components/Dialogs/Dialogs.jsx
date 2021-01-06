@@ -2,7 +2,7 @@ import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import styles from './Dialogs.module.css';
-import { Redirect } from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
 
 const Dialogs = (props) => {
   const onSendMessage = () => {
@@ -18,7 +18,24 @@ const Dialogs = (props) => {
   const dialogsElements = props.dialogs.map( user => <DialogItem name={user.name} key={user.id} id={user.id} ava={user.ava} />);
   const messagesElements = props.messages.map(msg => <Message message={msg.message} key={msg.id} />);
   
-  if (!props.isAuth) return <Redirect to='/login' />
+  const SendNewMessage = (props) => {
+    return (
+      <form onSubmit={props.handleSubmit}>
+        <div>
+          <Field placeholder={'new message'} name={'newMessage'} component={'textarea'}  />
+        </div>
+        <div>
+          <button>Send message</button>
+        </div>
+      </form>
+    )
+  };
+
+  const SendNewReduxMessage = reduxForm({ form: 'newMessage' })(SendNewMessage);
+
+  const onSubmit = (formData) => {
+    console.log(formData);
+  };
 
   return (
     <div className={styles.dialogs}>
@@ -30,7 +47,8 @@ const Dialogs = (props) => {
         {messagesElements}
       </div>
 
-      <div className={styles.submitForm}>
+      <SendNewReduxMessage onSubmit={onSubmit} />
+      {/* <div className={styles.submitForm}>
         <div>
           <textarea onChange={onMessageChange} value={props.newMessageText} 
                     placeholder='some text'></textarea>
@@ -38,7 +56,7 @@ const Dialogs = (props) => {
         <div>
           <button onClick={onSendMessage}>Send message</button>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
