@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './FormControls.module.css';
+import styles from './FormsControls.module.css';
 
 export const FormControl = (element) => ({input, meta, ...props}) => {
   const hasError = meta.touched && meta.error;
