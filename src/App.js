@@ -4,16 +4,22 @@ import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Setting from './components/Setting/Setting';
-import {Route} from 'react-router-dom';
+import {Route, withRouter} from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginPage from './components/Login/Login';
+import { connect } from 'react-redux';
+import { getAuthUserData } from './redux/auth-reducer';
+import { compose } from 'redux';
 
 
-const App = () => {
-  return (
+class App extends React.Component {
+  componentDidMount = () => this.props.getAuthUserData();
+
+  render() {
+    return (
       <div className="app-wrapper">
         <HeaderContainer />
         <Navbar />
@@ -27,7 +33,13 @@ const App = () => {
           <Route path="/login" render={() => <LoginPage />} />
         </div>
       </div>
-  );
+    );
+  }
 }
 
-export default App;
+
+
+export default compose(
+  withRouter,
+  connect(null, { getAuthUserData })
+)(App);
