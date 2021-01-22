@@ -15,28 +15,24 @@ export const setAuthUserData = (id, email, login, isAuth) => {
   return {type: SET_USER_DATA, payload: {id, email, login, isAuth}};
 }
 //thunk
-export const getAuthUserData = () => (dispatch) => {
-  return authAPI.amIAuthorized().then(data => {
-    if (data.resultCode === 0) {
-      let {id, email, login} = data.data;
-      dispatch(setAuthUserData(id, email, login, true));
-    }
-  })
+export const getAuthUserData = () => async (dispatch) => {
+  const data = await authAPI.amIAuthorized();
+  if (data.resultCode === 0) {
+    let {id, email, login} = data.data;
+    dispatch(setAuthUserData(id, email, login, true));
+  }
 };
-export const login = (email, password, rememberMe) => (dispatch) => {
-  authAPI.login(email, password, rememberMe)
-    .then(data => {
-      if (data.resultCode === 0) dispatch(getAuthUserData());
-      else dispatch(stopSubmit('login', {_error: data.messages[0] || 'some error'}));
-    })
+
+export const login = (email, password, rememberMe) => async (dispatch) => {
+  const data = await authAPI.login(email, password, rememberMe)
+  if (data.resultCode === 0) dispatch(getAuthUserData());
+  else dispatch(stopSubmit('login', {_error: data.messages[0] || 'some error'}));
 };
-export const logout = () => (dispatch) => {
-  authAPI.logout()
-    .then(data => {
-      if (data.resultCode === 0) dispatch(setAuthUserData(null, null, null, false));
-      else console.error(data.messages);
-    })
-}
+export const logout = () => async (dispatch) => {
+  const data = await authAPI.logout();
+  if (data.resultCode === 0) dispatch(setAuthUserData(null, null, null, false));
+  else console.error(data.messages);
+};
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
