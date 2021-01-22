@@ -5,10 +5,3 @@
 .name {
   font-weight: 700;
 }
-
-.selectedPage {
-  font-weight: 700;
-  margin: 5px;
-  cursor: pointer;
-  user-select: none;
-}
