@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Setting/Setting.jsx"],"names":["Setting","props"],"mappings":"oIAAA,2BAUeA,UARC,SAACC,GACf,OACE","file":"static/js/5.42746dcd.chunk.js","sourcesContent":["import React from 'react';\n\nconst Setting = (props) => {\n  return (      \n    <div>\n      Setting\n    </div>\n  )\n}\n\nexport default Setting;"],"sourceRoot":""}
