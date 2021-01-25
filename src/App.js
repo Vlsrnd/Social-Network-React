@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
-import Music from './components/Music/Music';
-import Setting from './components/Setting/Setting';
 import {BrowserRouter, Route, withRouter} from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import LoginPage from './components/Login/Login';
 import { connect, Provider } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
 import { compose } from 'redux';
 import Preloader from './components/Preloader/preloader';
 import { store } from './redux/redux-store';
+import { withSuspense } from './hoc/withSuspense';
 
+const Music = React.lazy(() => import('./components/Music/Music'));
+const Setting = React.lazy(() => import('./components/Setting/Setting'));
+const LoginPage = React.lazy(() => import('./components/Login/Login'));
 
 class App extends React.Component {
   componentDidMount = () => this.props.initializeApp();
@@ -30,10 +31,10 @@ class App extends React.Component {
           <Route  path="/profile/:userId?" render={() => <ProfileContainer />} />
           <Route  path="/dialogs" render={() => <DialogsContainer />} />
           <Route path="/news" render={() => <News />} />
-          <Route path="/music" render={() => <Music />} />
+          <Route path="/music" render={withSuspense(Music)} />
           <Route path="/users" render={() => <UsersContainer />} />
-          <Route path="/setting" render={() => <Setting />} />
-          <Route path="/login" render={() => <LoginPage />} />
+          <Route path="/setting" render={withSuspense(Setting)} />
+          <Route path="/login" render={withSuspense(LoginPage)} />
         </div>
       </div>
     );
