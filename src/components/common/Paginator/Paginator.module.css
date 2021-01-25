@@ -1,3 +1,9 @@
+.paginator button {
+  margin: 0 10px;
+}
+.paginator span {
+  padding: 0 5px;
+}
 .selectedPage {
   font-weight: 700;
   margin: 5px;
