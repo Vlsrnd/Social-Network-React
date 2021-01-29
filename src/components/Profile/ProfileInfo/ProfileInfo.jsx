@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Preloader from '../../Preloader/preloader';
 import styles from './ProfileInfo.module.css';
-import ProfileStatusWithHooks from './ProfileStatusWithHooks';
+import ProfileStatus from './ProfileStatus';
 import userPhoto from '../../../assets/images/user.png';
 import ProfileDataForm from './ProfileDataForm';
 
@@ -34,7 +34,7 @@ const ProfileInfo = ({profile, status, updateUserStatus, isMyProfile, savePhoto,
             <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit} /> 
           : <ProfileData profile={profile} isMyProfile={isMyProfile} activateEditMode={activateEditMode}/>}
       </div>
-        <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus}/>
+        <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
     </div>
   )
 };
