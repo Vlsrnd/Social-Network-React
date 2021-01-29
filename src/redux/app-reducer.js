@@ -9,8 +9,9 @@ let initialState = {
 //action creator
 export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 // thunk
-export const initializeApp = () => (dispatch) => {
-  dispatch(getAuthUserData()).then(() => dispatch(initializedSuccess()));
+export const initializeApp = () => async (dispatch) => {
+  await dispatch(getAuthUserData())
+  dispatch(initializedSuccess());
 };
 
 export const appReducer = (state = initialState, action) => {
