@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Preloader from '../../../Preloader/preloader';
+import Preloader from '../../Preloader/preloader';
 import styles from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
-import userPhoto from '../../../../assets/images/user.png';
+import userPhoto from '../../../assets/images/user.png';
 import ProfileDataForm from './ProfileDataForm';
 
 const ProfileInfo = ({profile, status, updateUserStatus, isMyProfile, savePhoto, saveProfileData}) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
-import { createField, FormControl } from '../../../common/FormsControls/FormsControls';
-import styles from '../../../common/FormsControls/FormsControls.module.css'
+import { createField, FormControl } from '../../common/FormsControls/FormsControls';
+import styles from '../../common/FormsControls/FormsControls.module.css'
 
 const Input = FormControl('input');
 const TextArea = FormControl('textarea');
