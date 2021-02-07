@@ -3,28 +3,27 @@ import { NavLink } from 'react-router-dom';
 import FriendsContainer from './Friends/FriendsContainer';
 import styles from './Navbar.module.css';
 
+const nav = [
+  {link: '/profile', text: 'Profile'},
+  {link: '/dialogs', text: 'Messages'},
+  {link: '/news', text: 'News'},
+  {link: '/music', text: 'Music'},
+  {link: '/users', text: 'Users'},
+  {link: '/settings', text: 'Settings'},
+]
+
+const NavLinkComponent = ({link, text}) => {
+  return (
+    <div className={styles.item}>
+      <NavLink to={link} activeClassName={styles.activeLink}>{text}</NavLink>
+    </div>
+  )
+};
 
 const Navbar = () => {
   return (
     <nav className={styles.nav}>
-      <div className={`${styles.item} ${styles.active}`}>
-        <NavLink to="/profile" activeClassName={styles.activeLink}>Profile</NavLink>
-      </div>
-      <div className={styles.item}>
-        <NavLink to="/dialogs" activeClassName={styles.activeLink}>Messages</NavLink>
-      </div>
-      <div className={styles.item}>
-        <NavLink to="/news" activeClassName={styles.activeLink}>News</NavLink>
-      </div>
-      <div className={styles.item}>
-        <NavLink to="/music" activeClassName={styles.activeLink}>Music</NavLink>
-      </div>
-      <div className={styles.item}>
-        <NavLink to="/users" activeClassName={styles.activeLink}>Users</NavLink>
-      </div>
-      <div className={styles.item}>
-        <NavLink to="/setting" activeClassName={styles.activeLink}>Setting</NavLink>
-      </div>
+      {nav.map(l => <NavLinkComponent link={l.link} text={l.text} key={`${l.link}${l.text}`} />)}
       <div className={styles.item}>
         <FriendsContainer />
       </div>
