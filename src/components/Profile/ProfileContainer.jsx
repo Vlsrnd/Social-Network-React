@@ -8,12 +8,11 @@ import Profile from './Profile';
 
 class ProfileContainer extends React.Component {
   refreshProfile = () => {
-    let userId = this.props.match.params.userId;
+    let userId = this.props.match.params.userId
+      || this.props.authorizedUserId;
     if (!userId) {
-      userId = this.props.authorizedUserId;
-      if (!userId) {
-        this.props.history.push('/login');
-      }
+      this.props.history.push('/login');
+      return;
     }
     this.props.getUserProfile(userId);
     this.props.getUserStatus(userId);
