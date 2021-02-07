@@ -30,8 +30,12 @@ export const getUserProfile = (userId) => async (dispatch) => {
   dispatch(setUserProfile(data));
 };
 export const getUserStatus = (userId) => async (dispatch) => {
-  const response = await profileAPI.getStatus(userId)
-  dispatch(setStatus(response.data));
+  try {
+    const response = await profileAPI.getStatus(userId);
+    dispatch(setStatus(response.data));
+  } catch(err) {
+    console.log(err);
+  }
 };
 export const updateUserStatus = (status) => async (dispatch) => {
   const data = await profileAPI.updateStatus(status);
