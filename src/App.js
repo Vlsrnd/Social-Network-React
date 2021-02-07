@@ -15,7 +15,7 @@ import { store } from './redux/redux-store';
 import { withSuspense } from './hoc/withSuspense';
 
 const Music = React.lazy(() => import('./components/Music/Music'));
-const Setting = React.lazy(() => import('./components/Setting/Setting'));
+const Settings = React.lazy(() => import('./components/Settings/Settings'));
 const LoginPage = React.lazy(() => import('./components/Login/Login'));
 
 class App extends React.Component {
@@ -33,7 +33,7 @@ class App extends React.Component {
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={withSuspense(Music)} />
           <Route path="/users" render={() => <UsersContainer />} />
-          <Route path="/setting" render={withSuspense(Setting)} />
+          <Route path="/settings" render={withSuspense(Settings)} />
           <Route path="/login" render={withSuspense(LoginPage)} />
         </div>
       </div>

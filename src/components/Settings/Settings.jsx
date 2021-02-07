@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Setting = (props) => {
+const Settings = (props) => {
   return (      
     <div>
-      Setting
+      Settings
     </div>
   )
 }
 
-export default Setting;
+export default Settings;
