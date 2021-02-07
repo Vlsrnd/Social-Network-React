@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
@@ -18,27 +18,26 @@ const Music = React.lazy(() => import('./components/Music/Music'));
 const Settings = React.lazy(() => import('./components/Settings/Settings'));
 const LoginPage = React.lazy(() => import('./components/Login/Login'));
 
-class App extends React.Component {
-  componentDidMount = () => this.props.initializeApp();
-
-  render() {
-    if (!this.props.initialized) return <Preloader />
-    return (
-      <div className="app-wrapper">
-        <HeaderContainer />
-        <Navbar />
-        <div className="app-wrapper-content">
-          <Route  path="/profile/:userId?" render={() => <ProfileContainer />} />
-          <Route  path="/dialogs" render={() => <DialogsContainer />} />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/music" render={withSuspense(Music)} />
-          <Route path="/users" render={() => <UsersContainer />} />
-          <Route path="/settings" render={withSuspense(Settings)} />
-          <Route path="/login" render={withSuspense(LoginPage)} />
-        </div>
+const App = (props) => {
+  useEffect(() => {
+    props.initializeApp();
+  }, [props]);
+  if (!props.initialized) return <Preloader />
+  return (
+    <div className="app-wrapper">
+      <HeaderContainer />
+      <Navbar />
+      <div className="app-wrapper-content">
+        <Route  path="/profile/:userId?" render={() => <ProfileContainer />} />
+        <Route  path="/dialogs" render={() => <DialogsContainer />} />
+        <Route path="/news" render={() => <News />} />
+        <Route path="/music" render={withSuspense(Music)} />
+        <Route path="/users" render={() => <UsersContainer />} />
+        <Route path="/settings" render={withSuspense(Settings)} />
+        <Route path="/login" render={withSuspense(LoginPage)} />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => ({
