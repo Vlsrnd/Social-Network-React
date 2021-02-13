@@ -1,11 +1,11 @@
 import { stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
-const ADD_POST = 'ADD-POST';
-const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_STATUS = 'SET-STATUS';
-const DELETE_POST = 'DELETE_POST';
-const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
+const ADD_POST = 'social-network-react/src/redux/profile-reducer/ADD-POST';
+const SET_USER_PROFILE = 'social-network-react/src/redux/profile-reducer/SET-USER-PROFILE';
+const SET_STATUS = 'social-network-react/src/redux/profile-reducer/SET-STATUS';
+const DELETE_POST = 'social-network-react/src/redux/profile-reducer/DELETE_POST';
+const SAVE_PHOTO_SUCCESS = 'social-network-react/src/redux/profile-reducer/SAVE_PHOTO_SUCCESS';
 
 let initialState = {
   posts: [{id: 1, message: 'Hi', likesCount: 11, imgLink: 'morty1.png'},
