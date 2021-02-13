@@ -1,4 +1,4 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_MESSAGE = 'social-network-react/src/redux/dialogs-reducer/ADD-MESSAGE';
 
 export const sendMessage = (newMessageBody) => ({ type: 'ADD-MESSAGE', newMessageBody });
 
