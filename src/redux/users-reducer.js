@@ -1,13 +1,13 @@
 import { followAPI, usersAPI } from "../api/api";
 import { updateObjectInArray } from "../utils/object-helpers";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET-USERS';
-const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
-const SET_USERS_TOTAL_COUNT = 'SET-USERS-TOTAL-COUNT';
-const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
-const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS';
+const FOLLOW = 'social-network-react/src/redux/users-reducer/FOLLOW';
+const UNFOLLOW = 'social-network-react/src/redux/users-reducer/UNFOLLOW';
+const SET_USERS = 'social-network-react/src/redux/users-reducer/SET-USERS';
+const SET_CURRENT_PAGE = 'social-network-react/src/redux/users-reducer/SET-CURRENT-PAGE';
+const SET_USERS_TOTAL_COUNT = 'social-network-react/src/redux/users-reducer/SET-USERS-TOTAL-COUNT';
+const TOGGLE_IS_FETCHING = 'social-network-react/src/redux/users-reducer/TOGGLE-IS-FETCHING';
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'social-network-react/src/redux/users-reducer/TOGGLE-IS-FOLLOWING-PROGRESS';
 
 let initialState = {
   users: [],
