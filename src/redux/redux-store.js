@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import { profileReducer } from './profileReducer';
+import { profileReducer } from './profile-reducer';
 import { dialogsReducer } from './dialogs-reducer';
 import { sidebarReducer } from './sidebarReducer';
 import { usersReducer } from './usersReducer';
