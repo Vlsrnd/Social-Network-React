@@ -8,12 +8,9 @@ const DELETE_POST = 'social-network-react/src/redux/profile-reducer/DELETE_POST'
 const SAVE_PHOTO_SUCCESS = 'social-network-react/src/redux/profile-reducer/SAVE_PHOTO_SUCCESS';
 
 let initialState = {
-  posts: [{id: 1, message: 'Hi', likesCount: 11, imgLink: 'morty1.png'},
-          {id: 2, message: 'How is your it-kamasutra?', likesCount: 52, imgLink: 'mario1.png'},
-          {id: 3, message: 'Yo', likesCount: 2, imgLink: 'morty1.png'},
-          {id: 4, message: 'How are you', likesCount: 6, imgLink: 'sonic1.png'},
-          {id: 5, message: 'Hey, long time no see', likesCount: 14, imgLink: 'Donald_Duck1.png'},
-          {id: 6, message: 'How have you been?', likesCount: 18, imgLink: 'chip1.png'}],
+  posts: [{id: 1, message: 'Hi', likesCount: 11},
+          {id: 2, message: 'How is your it-kamasutra?', likesCount: 52},
+          {id: 3, message: 'How are you', likesCount: 6}],
   profile: null,
   status: '',
 };
