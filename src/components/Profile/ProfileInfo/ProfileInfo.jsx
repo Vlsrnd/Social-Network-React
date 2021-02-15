@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Preloader from "../../Preloader/preloader";
 import styles from "./ProfileInfo.module.css";
 import ProfileStatus from "./ProfileStatus";
-import userPhoto from "../../../assets/images/user-default.svg";
 import ProfileDataForm from "./ProfileDataForm";
+
+import userPhoto from "../../../assets/images/user-default.svg";
+import loadPhotoImg from "../../../assets/images/load.svg";
 
 const ProfileInfo = ({
   profile,
@@ -29,49 +31,68 @@ const ProfileInfo = ({
   };
 
   return (
-    <div>
-      <div className={styles.descriptionBlock}>
-        <img
-          src={profile.photos.large || userPhoto}
-          className={styles.mainPhoto}
-          alt="user avatar"
-        />
-        {isMyProfile && <input type={"file"} onChange={onMainPhotoSelected} />}
-        {editMode ? (
-          <ProfileDataForm
-            initialValues={profile}
-            profile={profile}
-            onSubmit={onSubmit}
+    <>
+      <div className={styles.profileInfo}>
+        <div className={styles.photoBlock}>
+          <img
+            src={profile.photos.large || userPhoto}
+            className={styles.mainPhoto}
+            alt="user avatar"
           />
-        ) : (
-          <ProfileData
-            profile={profile}
-            isMyProfile={isMyProfile}
-            activateEditMode={activateEditMode}
-          />
-        )}
+          {isMyProfile && (
+            <div className={styles.changePhotoBtn}>
+              <label htmlFor="input_file">
+                <img src={loadPhotoImg} alt="load" />
+              </label>
+              <input
+                id="input_file"
+                type={"file"}
+                onChange={onMainPhotoSelected}
+              />
+            </div>
+          )}
+        </div>
+        <div className={styles.descriptionBlock}>
+          {editMode ? (
+            <ProfileDataForm
+              initialValues={profile}
+              profile={profile}
+              onSubmit={onSubmit}
+            />
+          ) : (
+            <ProfileData
+              profile={profile}
+              isMyProfile={isMyProfile}
+              activateEditMode={activateEditMode}
+            />
+          )}
+        </div>
       </div>
-      <ProfileStatus status={status} updateUserStatus={updateUserStatus} />
-    </div>
+      <ProfileStatus 
+        status={status} 
+        updateUserStatus={updateUserStatus} />
+    </>
   );
 };
 
 const Contact = ({ contactTitle, contactValue }) => {
   return contactValue ? (
     <div>
-      <b>{contactTitle}:</b>
+      <b>{contactTitle}: </b>
       {contactValue}
     </div>
-  ) : <div/>;
+  ) : (
+    <div />
+  );
 };
 
 const ProfileData = ({ profile, isMyProfile, activateEditMode }) => {
   return (
     <div>
       {isMyProfile && (
-        <div>
-          <button onClick={activateEditMode}>edit</button>
-        </div>
+        <button onClick={activateEditMode} className={styles.editModeBtn}>
+          edit
+        </button>
       )}
       <div>
         <b>Full name:</b> {profile.fullName}
