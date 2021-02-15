@@ -1,6 +1,6 @@
 const ADD_MESSAGE = 'social-network-react/src/redux/dialogs-reducer/ADD-MESSAGE';
 
-export const sendMessage = (newMessageBody) => ({ type: 'ADD-MESSAGE', newMessageBody });
+export const sendMessage = (newMessageBody) => ({ type: ADD_MESSAGE, newMessageBody });
 
 const initialState = {
   messages: [{id: 1, message: 'Hi, hey'}, 
