@@ -6,41 +6,52 @@ import styles from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const maxLength30 = maxLengthCreator(30);
-const Textarea = FormControl('textarea')
+const Textarea = FormControl('textarea');
 
 const MyPosts = React.memo((props) => {
-  const postsElements = props.posts.map(p => <Post message={p.message} key={p.id} 
-    likesCount={p.likesCount} imgLink={p.imgLink}/>)
+  const postsElements = props.posts.map((p) => (
+    <Post
+      message={p.message}
+      key={p.id}
+      likesCount={p.likesCount}
+      imgLink={p.imgLink}
+    />
+  ));
   const AddNewPostForm = (props) => {
     return (
-      <form onSubmit={props.handleSubmit}>
+      <form
+        className={styles.addPostForm}
+        onSubmit={props.handleSubmit}>
         <div>
-          <Field component={Textarea} placeholder='new post'
-            validate={[required, maxLength30]} 
-            name='newPostBody' />
+          <Field
+            component={Textarea}
+            placeholder="new post"
+            validate={[required, maxLength30]}
+            name="newPostBody"
+          />
         </div>
         <div>
           <button>Add post</button>
         </div>
       </form>
-    )
+    );
   };
-  const AddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm'})(AddNewPostForm);
+  const AddNewPostFormRedux = reduxForm({ form: 'ProfileAddNewPostForm' })(
+    AddNewPostForm
+  );
 
   const onAddPost = (formData) => {
-    const {newPostBody} = formData;
+    const { newPostBody } = formData;
     props.addPost(newPostBody);
   };
 
-  return (      
+  return (
     <div className={styles.postsBlock}>
-      <h3>There is my posts</h3>
+      <h3>My posts:</h3>
+      {postsElements}
       <AddNewPostFormRedux onSubmit={onAddPost} />
-      <div className={styles.posts}>
-        {postsElements}
-      </div>
-    </div> 
-  )
+    </div>
+  );
 });
 
 export default MyPosts;

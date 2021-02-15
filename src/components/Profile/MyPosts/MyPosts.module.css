@@ -1,7 +1,15 @@
-.posts {
-  background-color: lightgray;
-}
-
 .postsBlock {
-  padding: 10px;
+  text-align: center;
+}
+.addPostForm * {
+  width: 100%;
+}
+.addPostForm button {
+  padding: 10px 0;
+  border: none;
+  font-family: monospace;
+  text-transform: uppercase;
+}
+.addPostForm button:hover {
+  border: 1px solid #ccc;
 }
