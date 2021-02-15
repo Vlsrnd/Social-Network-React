@@ -4,10 +4,10 @@ import userPhoto from "../../../assets/images/user-default.svg";
 import styles from "../users.module.css";
 
 const User = ({ user, followingInProgress, follow, unfollow }) => {
-  debugger
+  debugger;
   return (
-    <div>
-      <span>
+    <div className={styles.user}>
+      <div>
         <div>
           <NavLink to={"/profile/" + user.id}>
             <img
@@ -17,30 +17,28 @@ const User = ({ user, followingInProgress, follow, unfollow }) => {
             />
           </NavLink>
         </div>
-        <div>
-          {user.followed ? (
-            <button
-              disabled={followingInProgress.includes(user.id)}
-              onClick={() => unfollow(user.id)}
-            >
-              Unfollow
-            </button>
-          ) : (
-            <button
-              disabled={followingInProgress.includes(user.id)}
-              onClick={() => follow(user.id)}
-            >
-              Follow
-            </button>
-          )}
-        </div>
-      </span>
-      <span>
-        <span>
-          <div className={styles.name}>{user.name}</div>
-          <div>{user.status}</div>
-        </span>
-      </span>
+        {user.followed ? (
+          <button
+            className={styles.userFollowBtn}
+            disabled={followingInProgress.includes(user.id)}
+            onClick={() => unfollow(user.id)}
+          >
+            Unfollow
+          </button>
+        ) : (
+          <button
+            className={styles.userFollowBtn}
+            disabled={followingInProgress.includes(user.id)}
+            onClick={() => follow(user.id)}
+          >
+            Follow
+          </button>
+        )}
+      </div>
+      <div className={styles.userInfo}>
+        <div>Name: {user.name}</div>
+        <div>Status: {user.status}</div>
+      </div>
     </div>
   );
 };
