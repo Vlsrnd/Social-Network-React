@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import userPhoto from '../../../assets/images/user.png';
+import userPhoto from '../../../assets/images/user-default.svg';
 import styles from '../users.module.css';
 
 const User = ({user, followingInProgress, follow, unfollow}) => {
