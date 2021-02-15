@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Preloader from "../../Preloader/preloader";
+import Preloader from "../../Preloader/Preloader";
 import styles from "./ProfileInfo.module.css";
 import ProfileStatus from "./ProfileStatus";
 import ProfileDataForm from "./ProfileDataForm";

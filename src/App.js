@@ -10,7 +10,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import { connect, Provider } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
 import { compose } from 'redux';
-import Preloader from './components/Preloader/preloader';
+import Preloader from './components/Preloader/Preloader';
 import { store } from './redux/redux-store';
 import { withSuspense } from './hoc/withSuspense';
 
