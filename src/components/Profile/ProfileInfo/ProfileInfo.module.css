@@ -1,15 +1,52 @@
-.descriptionBlock {
+.profileInfo {
   padding: 10px;
-  display: grid;
-  grid-template-columns: 2fr 10fr;
+  display: flex;
 }
-.descriptionBlock img {
-  width: 200px;
+.photoBlock {
+  position: relative;
+  max-width: 300px;
+  width: 40%;
 }
-.wallpapper {
-  background-image: url('/public/image/big01.jpg');
-  text-align: center;
+.photoBlock>img {
+  width: 100%;
 }
-.wallpapper img {
-  /* height: 200px; */
+.changePhotoBtn {
+  width: 20%;
+  max-width: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: .2;
+}
+.changePhotoBtn img:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.changePhotoBtn input {
+  display: none;
+}
+.descriptionBlock {
+  width: 100%;
+  padding: 10px;
+  position: relative;
+}
+.editModeBtn {
+  border: none;
+  font-family: monospace;
+  position: absolute;
+  background-color: transparent;
+  right: 0;
+  top: 0;
+}
+.status {
+  padding: 10px;
+}
+
+@media (max-device-width: 599px) {
+  .profileInfo {
+    flex-direction: column;
+  }
+  .photoBlock {
+    width: 100%;
+  }
 }
